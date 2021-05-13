@@ -39,7 +39,7 @@ def page_not_found(e):
 app = Flask(__name__)
 UPLOAD_FOLDER = '/static/images'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config["MONGODB_HOST"] = os.getenv("MONGODB_HOST")
+app.config["MONGODB_HOST"] = os.environ.get("MONGODB_HOST")
 
 app.config['MAIL_SERVER']='smtp.mailtrap.io'
 app.config['MAIL_PORT'] = 2525
