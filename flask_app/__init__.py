@@ -40,6 +40,7 @@ app = Flask(__name__)
 UPLOAD_FOLDER = '/static/images'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config["MONGODB_HOST"] = os.environ.get("MONGODB_HOST")
+app.config.from_pyfile("config.py", silent=False)
 
 app.config['MAIL_SERVER']='smtp.mailtrap.io'
 app.config['MAIL_PORT'] = 2525
