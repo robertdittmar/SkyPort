@@ -36,31 +36,29 @@ from .stellar_objects.routes import stellar_objects
 def page_not_found(e):
     return render_template("404.html"), 404
 
-
-def create_app(test_config=None):
-    app = Flask(__name__)
-    UPLOAD_FOLDER = '/static/images'
-    app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-    app.config["MONGODB_HOST"] = os.getenv("MONGODB_HOST")
+app = Flask(__name__)
+UPLOAD_FOLDER = '/static/images'
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config["MONGODB_HOST"] = os.getenv("MONGODB_HOST")
 
     
-    app.config.from_pyfile("config.py", silent=False)
-    if test_config is not None:
-        app.config.update(test_config)
+app.config.from_pyfile("config.py", silent=False)
+if test_config is not None:
+    app.config.update(test_config)
 
-    app.config['MAIL_SERVER']='smtp.mailtrap.io'
-    app.config['MAIL_PORT'] = 2525
-    app.config['MAIL_USERNAME'] = '1e6f73a05278e3'
-    app.config['MAIL_PASSWORD'] = 'ad88317303ff28'
-    app.config['MAIL_USE_TLS'] = True
-    app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_SERVER']='smtp.mailtrap.io'
+app.config['MAIL_PORT'] = 2525
+app.config['MAIL_USERNAME'] = '1e6f73a05278e3'
+app.config['MAIL_PASSWORD'] = 'ad88317303ff28'
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
 
-    db.init_app(app)
-    login_manager.init_app(app)
-    mail.init_app(app)
-    bcrypt.init_app(app)
+db.init_app(app)
+login_manager.init_app(app)
+mail.init_app(app)
+bcrypt.init_app(app)
     
-    csp = {
+csp = {
         'default-src': [
             '\'self\'',
             '\'unsafe-inline\'',
@@ -69,14 +67,12 @@ def create_app(test_config=None):
             'cdn.jsdelivr.net'
             ],
         'img-src': '* data:'
-    }
+}
 
-    Talisman(app, content_security_policy=csp)
+Talisman(app, content_security_policy=csp)
 
-    app.register_blueprint(users)
-    app.register_blueprint(stellar_objects)
-    app.register_error_handler(404, page_not_found)
+app.register_blueprint(users)
+app.register_blueprint(stellar_objects)
+app.register_error_handler(404, page_not_found)
 
-    login_manager.login_view = "users.login"
-
-    return app
+login_manager.login_view = "users.login"
