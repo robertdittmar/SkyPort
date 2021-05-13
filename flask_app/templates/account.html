@@ -1,0 +1,40 @@
+{% extends "header.html" %}
+{% block content %}
+<head>
+    <style>
+        body {
+            background-image: url('/static/images/background.jpeg');
+            color: whitesmoke;
+        }
+
+        .label {
+            color: rgb(27, 192, 233)
+        }
+
+        .title {
+            text-align: center;
+            color: rgb(27, 192, 233)
+        }
+    </style>
+</head>
+<div class="row">
+    <div class="col">
+        <h2>Welcome home, space cowboy.</h2>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col">
+        <a href="{{ url_for('stellar_objects.user_detail', username=current_user.username) }}">
+            <h4>Click here to see all of your posts and comments!</h4>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <a href="{{ url_for('users.post')}}">
+            <h4>Click here to create a post!</h4>
+        </a>
+    </div>
+</div>
+{% endblock %}>

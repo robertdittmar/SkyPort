@@ -1,0 +1,60 @@
+{% extends "header.html" %}
+{% block content %}
+<head>
+    <style>
+        body {
+            background-image: url('/static/images/background.jpeg');
+            color: whitesmoke;
+        }
+
+        .label {
+            color: rgb(27, 192, 233)
+        }
+
+        .title {
+            text-align: center;
+            color: rgb(27, 192, 233)
+        }
+
+        .center {
+            text-align: center;
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<h1 class="title">Search Results for "{{ query }}"</h1>
+<h2>Threads({{stel_obj.count()}}):</h2>
+{% if stel_obj.count() > 0 %}
+    {% for stel in stel_obj %}
+    <div class="row">
+       <div class="col">
+          <h4 class="text-break"><a href="{{ url_for('stellar_objects.stellar_object', stellar_object=stel.object_name) }}">{{ stel.object_name}}</a></h4>
+      </div>
+    </div>
+    {% endfor %}
+{% else %}
+<div class="row">
+    <div class="col">
+        <h4 class="center">It appears that nobody wanted to talk about poor old {{ query }} :(</h4>
+        <br />
+        <a href="{{ url_for('stellar_objects.add_object') }}"><h5 class="title">If you want to show {{ query }} some love (or hate, we don't judge), click here to start a conversation!</h5></a>
+    </div>
+</div>
+{% endif %}
+<h2>User Posts({{posts.count()}}):</h2>
+{% for post in posts %}
+<div class="row">
+    <div class="col">
+        <h4><a href="{{ url_for('stellar_objects.about') }}">{{ post.title }}</a></h1>
+    </div>
+</div>
+{% endfor %}
+<h2>Users({{users.count()}}):</h2>
+{% for user in users %}
+<div class="row">
+    <div class="col">
+        <h4><a href="{{ url_for('stellar_objects.user_detail', username=user.username) }}">{{ user.username }}</a></h1>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "header.html" %}
+{% block content %}
+<head>
+    <style>
+        body {
+            /* text-align: center; */
+            background-image: url('/static/images/blackholeconcept.jpeg');
+            color: whitesmoke;
+        }
+    </style>
+</head>
+<div class="row">
+    <div class="col" style="text-align: center;">
+        <h1>
+            So sorry. Your webpage went into the black hole :(
+        </h1>
+        <h3>
+            404 - Page Not Found
+        </h3>
+        <b>
+            <a href="{{ url_for('users.index') }}">
+                Return to the home page
+            </a>
+        </b>
+    </div>
+</div>
+
+{% endblock %}

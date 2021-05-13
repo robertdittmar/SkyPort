@@ -1,0 +1,26 @@
+{% extends "header.html" %}
+{% block content %}
+<head>
+    <style>
+        body {
+            background-image: url('/static/images/background.jpeg');
+            color: whitesmoke;
+        }
+
+        .label {
+            color: rgb(27, 192, 233)
+        }
+
+        .title {
+            text-align: center;
+            color: rgb(27, 192, 233)
+        }
+    </style>
+</head>
+<div class="row">
+    <div class="col">
+        <h2>Sorry {{ name }}, you have not confirmed your email!</h2>
+        <h3>Please confirm your account using the link sent to {{ email }} to use SkyPort.</h3>
+    </div>
+</div>
+{% endblock %}>
