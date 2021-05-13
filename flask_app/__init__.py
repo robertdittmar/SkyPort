@@ -41,11 +41,6 @@ UPLOAD_FOLDER = '/static/images'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config["MONGODB_HOST"] = os.getenv("MONGODB_HOST")
 
-    
-app.config.from_pyfile("config.py", silent=False)
-if test_config is not None:
-    app.config.update(test_config)
-
 app.config['MAIL_SERVER']='smtp.mailtrap.io'
 app.config['MAIL_PORT'] = 2525
 app.config['MAIL_USERNAME'] = '1e6f73a05278e3'
