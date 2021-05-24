@@ -42,12 +42,12 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config["MONGODB_HOST"] = os.environ.get("MONGODB_HOST")
 app.config.from_pyfile("config.py", silent=False)
 
-app.config['MAIL_SERVER']='smtp.mailtrap.io'
-app.config['MAIL_PORT'] = 2525
-app.config['MAIL_USERNAME'] = '1e6f73a05278e3'
-app.config['MAIL_PASSWORD'] = 'ad88317303ff28'
-app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_SERVER'] = os.environ.get("MAIL_SERVER")
+app.config['MAIL_PORT'] = os.environ.get("MAIL_PORT")
+app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
 
 db.init_app(app)
 login_manager.init_app(app)

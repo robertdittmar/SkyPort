@@ -20,12 +20,12 @@
             </li>
         </ul>
         <ul class="navbar-nav ml-auto">
+            {% if current_user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('stellar_objects.add_object') }}">
                     Start Thread
                 </a>
             </li>
-            {% if current_user.is_authenticated %}
             <li class="nav-item">
                 <a class="nav-link" href="{{ url_for('users.account') }}">
                     Account
