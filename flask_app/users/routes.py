@@ -71,7 +71,6 @@ def register():
                       recipients=[form.email.data])
         link = url_for('users.confirm_email', token=token, _external=True)
         msg.body = "Hello and welcome to SkyPort! Please confirm your email at this link:\n\n{}".format(link)
-        mail.connect()
         mail.send(msg)
 
         return redirect(url_for("users.login"))
