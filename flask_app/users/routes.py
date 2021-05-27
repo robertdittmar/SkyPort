@@ -67,7 +67,7 @@ def register():
         user.save()
         
         msg = Message("Thank You For Joining SkyPort!", 
-                      sender=("SkyPort", "skyportapp@gmail.com"), 
+                      sender=("SkyPort", os.environ.get("MAIL_USERNAME")), 
                       recipients=[form.email.data])
         link = url_for('users.confirm_email', token=token, _external=True)
         msg.body = "Hello and welcome to SkyPort! Please confirm your email at this link:\n\n{}".format(link)

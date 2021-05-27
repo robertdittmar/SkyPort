@@ -18,17 +18,11 @@ from flask_talisman import Talisman
 from datetime import datetime
 import os
 
-# local
-from .client import MovieClient
-
-
 db = MongoEngine()
 login_manager = LoginManager()
 mail = Mail()
 slizer = URLSafeSerializer('verysecret')
 bcrypt = Bcrypt()
-# from .users.routes import users
-# from .movies.routes import movies
 from .users.routes import users
 from .stellar_objects.routes import stellar_objects
 
@@ -42,10 +36,10 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config["MONGODB_HOST"] = os.environ.get("MONGODB_HOST")
 app.config.from_pyfile("config.py", silent=False)
 
-app.config['MAIL_SERVER'] = 'smtp.gmail.com' #os.environ.get("MAIL_SERVER")
-app.config['MAIL_PORT'] = 465 #os.environ.get("MAIL_PORT")
-app.config['MAIL_USERNAME'] = 'skyportconfirmation@gmail.com' #os.environ.get("MAIL_USERNAME")
-app.config['MAIL_PASSWORD'] = 'ardtyjlgvgcpstql' #os.environ.get("MAIL_PASSWORD")
+app.config['MAIL_SERVER'] = os.environ.get("MAIL_SERVER")
+app.config['MAIL_PORT'] = os.environ.get("MAIL_PORT")
+app.config['MAIL_USERNAME'] = os.environ.get("MAIL_USERNAME")
+app.config['MAIL_PASSWORD'] = os.environ.get("MAIL_PASSWORD")
 app.config['MAIL_USE_TLS'] = False
 app.config['MAIL_USE_SSL'] = True
 

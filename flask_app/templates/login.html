@@ -37,7 +37,6 @@
             {{ form.csrf_token }}
             <div class="form-group">
                 <h3 class="label">Username</h3>
-                <!-- {{ form.username.label(class="form-control-label green-text") }} -->
                 {{ form.username(class="form-control form-control-md") }}
 
                 {% if form.username.errors %}
@@ -50,7 +49,6 @@
             </div>
             <div class="form-group">
                 <h3 class="label">Password</h3>
-                <!-- {{ form.password.label(class="form-control-label") }} -->
                 {{ form.password(class="form-control form-control-lg") }}
 
                 {% if form.password.errors %}
