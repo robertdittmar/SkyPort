@@ -1,5 +1,5 @@
 # SkyPort Online Stargazing Forum
-## Deployed: skyport.herokuapp.com
+## Deployed: http://skyport.herokuapp.com
 
 SkyPort is an online forum where users can share and discuss their stargazing experiences.
 
